@@ -15,11 +15,14 @@ struct Card {
     static var identifierFactory = 0
     
     static func getUniqueIdentifier() -> Int {
+        //increment the identifier
         identifierFactory += 1
+        //return it to the calling card
         return Card.identifierFactory
     }
     
     init() {
+        //using static func
         self.identifier = Card.getUniqueIdentifier()
     }
     

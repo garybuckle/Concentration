@@ -22,14 +22,18 @@ class Concentration  {
         // incremant flipcount
         flipCount+=1
         // If we have a card facing up already, check if it matches the chosen one
-        if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex !=index {
-            
+        if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != Index {
+            // If they match, mark them as matched
+
+            // Increase the score
+
         }
         }
         
     
     
     init(numberOfPairsOfCards: Int) {
+        // gets the numbers of pairs of cards and creates pairs by copying the card that was created abd adding the copy to cards array
         for _ in 0..<numberOfPairsOfCards {
             let card = Card()
             cards+=[card,card]
