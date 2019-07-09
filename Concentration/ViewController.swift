@@ -36,8 +36,6 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoices = ["👻","🍅","💀","🎃","🤡","🦹🏼‍♂️","🏃🏾‍♀️"]
-    var emoji  = [Int: String]()
     
     
     
@@ -60,14 +58,21 @@ class ViewController: UIViewController {
         }
     }
     
-    func emoji(for card : Card) -> String {
-        if emoji[card.identifier] == nil , emojiChoices.count > 0
-        {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+    var emojiChoices = ["👻","🍅","💀","🎃","🤡","🦹🏼‍♂️","🤖","👽"]
+    var emoji  = [Int:String]()
+
+
+    
+    func emoji(for card: Card) -> String {
+        //Puts the emoji on the card if there is none i.e nil returned and that there are emojis left to take since we are removing them from the array to avoid duplication
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            // put a random emoji from emojiChopices in the card, removing it from emojichoices
+            let randomIndex = Int (arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
-        return emoji[card.identifier] ?? "?"
         
+        //Check if the card id is not nil if it is return ?
+        return emoji[card.identifier] ?? "?"
     }
     
 }

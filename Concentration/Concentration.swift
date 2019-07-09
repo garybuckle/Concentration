@@ -14,20 +14,33 @@ class Concentration  {
     var indexOfOneAndOnlyFaceUpCard: Int?
     var flipCount = 0
     
-    func chooseCard(at Index: Int) {
-        if cards[Index].isMatched {
-            // already matched do nothing
-            return
-        }
-        // incremant flipcount
-        flipCount+=1
-        // If we have a card facing up already, check if it matches the chosen one
-        if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != Index {
-            // If they match, mark them as matched
-
-            // Increase the score
-
-        }
+    func chooseCard(at index: Int) {
+        // No cards match
+        if !cards[index].isMatched {
+            // get the index of this card and make sure its  not the currrent card
+            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
+                // Check if the cards match
+                if cards[matchIndex].identifier == cards[index].identifier {
+                    //The identifiers are the same hence a match mark both as matched
+                    cards[matchIndex].isMatched = true
+                    cards[index].isMatched = true
+                }
+                //flip the chosen card
+                cards[index].isFaceUp = true
+                // set the indexOfOneAndOnlyFaceUpCard to nil
+                indexOfOneAndOnlyFaceUpCard = nil
+            } else {
+                // Either no cards or twop cards are face up so flip them all down
+                for flipDownIndex in cards.indices {
+                    cards[flipDownIndex].isFaceUp = false
+                }
+                // Turn chosen card up
+                cards[index].isFaceUp = true
+                //set the indexOfOneAndOnlyFaceUpCard card to this card
+                indexOfOneAndOnlyFaceUpCard = index
+                
+                }
+            }
         }
         
     
