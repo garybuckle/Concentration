@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoices = ["👻","🍅","💀","🎃","🤡","🦹🏼‍♂️","🤖","👽"]
+    var emojiChoices = ["👻","🍅","💀","🎃","🤡","🦹🏼‍♂️","🤖","👽","👺","😈","👾","👿","🤮","☠️"]
     //dictionary of emojis
     var emoji  = [Int:String]()
 
