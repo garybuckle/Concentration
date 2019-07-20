@@ -47,18 +47,19 @@ class ViewController: UIViewController {
             let card = game.cards[index]
             // face up or face down?
             if card.isFaceUp {
-                button.setTitle(emoji (for: card), for: UIControl.State.normal)
+                button.setTitle(emoji(for: card), for: UIControl.State.normal)
                 button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             }
             else {
                 button.setTitle("", for: UIControl.State.normal)
-                // if card is matched then its opaque (clear) if not its orange
+                // if card is matched then its opaque (clear) if not its orange. Ternary
                 button.backgroundColor = card.isMatched ?  #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             }
         }
     }
     
     var emojiChoices = ["👻","🍅","💀","🎃","🤡","🦹🏼‍♂️","🤖","👽"]
+    //dictionary of emojis
     var emoji  = [Int:String]()
 
 
@@ -67,12 +68,13 @@ class ViewController: UIViewController {
         //Puts the emoji on the card if there is none i.e nil returned and that there are emojis left to take since we are removing them from the array to avoid duplication
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
             // put a random emoji from emojiChopices in the card, removing it from emojichoices
-            let randomIndex = Int (arc4random_uniform(UInt32(emojiChoices.count)))
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
             emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
         }
         
         //Check if the card id is not nil if it is return ?
         return emoji[card.identifier] ?? "?"
+        
     }
     
 }

@@ -9,10 +9,11 @@
 import Foundation
 
 class Concentration  {
-    
-    var cards = [Card]()
+    // consider the following instance varts as api
+    var cards = [Card]()//array of cards
     var indexOfOneAndOnlyFaceUpCard: Int?
     var flipCount = 0
+
     
     func chooseCard(at index: Int) {
         // No cards match
